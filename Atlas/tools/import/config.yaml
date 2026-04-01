@@ -1,0 +1,72 @@
+# miniverse 匯入工具配置
+# 版本: 1.1
+# 使用前請將佔位符替換為你本機的實際路徑
+
+# ============================================================
+# 路徑配置
+# ============================================================
+paths:
+  # Claude Lit Workflow 的 zettel 輸出路徑
+  # 範例 (Windows): "C:/Users/YourName/projects/claude_lit_workflow/output/zettelkasten_notes"
+  # 範例 (Mac/Linux): "/home/yourname/projects/claude_lit_workflow/output/zettelkasten_notes"
+  claude_lit_output: "YOUR_CLAUDE_LIT_WORKFLOW_PATH/output/zettelkasten_notes"
+
+  # miniverse vault 的根目錄路徑
+  # 範例 (Windows): "C:/Users/YourName/vaults/miniverse"
+  # 範例 (Mac/Linux): "/home/yourname/vaults/miniverse"
+  vault: "YOUR_MINIVERSE_VAULT_PATH"
+
+  # Annotation 資料夾（相對於 vault，請勿修改）
+  annotation_folder: "ACT/0️⃣Annotation"
+
+  # PDF 資料夾（用於生成連結，相對於 vault，請勿修改）
+  pdf_folder: "+/pdf"
+
+  # BibTeX 檔案路徑（相對於 vault）
+  # 若無 Zotero，將此設為空字串 "" 並將下方 bibtex.enabled 改為 false
+  bibtex_file: "+/My Library.bib"
+
+# ============================================================
+# 模板配置
+# ============================================================
+templates:
+  # Annotation Note 模板路徑（相對於 vault，請勿修改）
+  annotation_template: "Templates/Template, Annotation Note.md"
+
+# ============================================================
+# 命名格式配置
+# ============================================================
+naming:
+  # 使用資料夾結構：Author-Year/Author-Year.md + cards/
+  use_at_prefix: false
+  folder_structure: true
+  annotation_suffix: ".md"
+
+# ============================================================
+# BibTeX 整合配置
+# ============================================================
+bibtex:
+  # 若沒有 Zotero/BibTeX 檔案，將 enabled 改為 false
+  enabled: true
+  author_format: "abbreviated"
+  fallback_on_missing: true
+
+# ============================================================
+# 行為配置
+# ============================================================
+behavior:
+  conflict_strategy: "conservative"
+  migrate_old_format: true
+  backup_before_migrate: true
+  backup_folder: "Atlas/recycle/annotation_migration_backup"
+  convert_cards: false
+  generate_report: true
+  report_folder: "Atlas/tools/reports"
+
+# ============================================================
+# 日誌配置
+# ============================================================
+logging:
+  level: "INFO"
+  file: "Atlas/tools/logs/import_zettel.log"
+  show_progress: true

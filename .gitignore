@@ -1,0 +1,11 @@
+# Obsidian workspace state
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+
+# Generated output (not demo content)
++/kb_output/
+
+# System files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,26 @@
+{
+  "_comment": "miniverse workflow config — fill in YOUR_CLAUDE_LIT_WORKFLOW_PATH before first use",
+  "_setup": "1. Set claude_lit_dir to your local clone of claude_lit_workflow",
+  "_setup2": "2. Confirm uv_executable points to the uv binary (Windows: where uv; Mac/Linux: which uv)",
+
+  "claude_lit_dir": "YOUR_CLAUDE_LIT_WORKFLOW_PATH",
+  "_note_claude_lit_dir": "Root directory of the claude_lit_workflow project. The slides / zettel / kb commands all run from this directory.",
+
+  "python_executable": "python",
+  "_note_python_executable": "Full path to the Python executable used by import_wrapper.js to run import_zettel.py. Run 'where python' (Windows) or 'which python3' (Mac/Linux) to find it.",
+
+  "uv_executable": "uv",
+  "_note_uv_executable": "Name or full path of the uv executable. If uv is on your PATH, 'uv' is sufficient; otherwise use a full path such as 'C:/Users/YourName/.cargo/bin/uv.exe'.",
+
+  "pdf_source_in_vault": "+/pdf",
+  "_note_pdf_source_in_vault": "Folder inside the vault where PDFs are stored (relative to vault root). slides_wrapper will list PDFs from here.",
+
+  "slides_output_subdir": "+/kb_output",
+  "_note_slides_output_subdir": "Output directory for the slides command, mapped via symlink to claude_lit_workflow/output/ (relative to vault root). Generated slide Markdown files are stored here.",
+
+  "zettel_output_subdir": "output/zettelkasten_notes",
+  "_note_zettel_output_subdir": "Output subdirectory for the zettel command (relative to claude_lit_dir). import_wrapper.js reads pending zettel folders from here.",
+
+  "twcc_models": ["your-model-1", "your-model-2"],
+  "_note_twcc_models": "Available models on your Ollama instance (local or remote). OLLAMA_URL is set in claude_lit_workflow/.env."
+}
