@@ -1,34 +1,24 @@
-name: Auto-label Issues and PRs
+name: Auto Label
 
 on:
-  issues:
-    types: [opened]
   pull_request:
-    types: [opened]
+    types:
+      - opened
+      - reopened
+      - synchronize
 
 jobs:
   label:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
-      pull-requests: write
     steps:
-      - name: Add component label
-        uses: actions/github-script@v7
+      - name: Auto-label PRs
+        uses: actions/github-script@v8
         with:
           script: |
-            const label = "component: annotation-blank";
-            const number = context.issue?.number ?? context.payload.pull_request?.number;
-            if (!number) return;
-
-            try {
-              await github.rest.issues.addLabels({
-                owner: context.repo.owner,
-                repo:  context.repo.repo,
-                issue_number: number,
-                labels: [label],
-              });
-            } catch (err) {
-              // Label may not exist yet — run the setup-labels workflow first
-              if (err.status !== 422) throw err;
-            }
+            const labels = ['lbl1', 'lbl2']; // replace with your labels
+            await github.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels
+            });
