@@ -1,0 +1,68 @@
+name: "🐛 Bug Report"
+description: Report a broken step in the annotation workflow.
+title: "[Bug] "
+labels:
+  - "bug"
+  - "component: annotation-blank"
+body:
+  - type: dropdown
+    id: pipeline_step
+    attributes:
+      label: Failing step
+      options:
+        - "Step 1 — Generate Slides"
+        - "Step 2 — Generate Zettel"
+        - "Step 3 — Import Zettel"
+        - "Obsidian plugin / hotkey (ALT+L)"
+        - "config.yaml / workflow-config.json"
+        - "BibTeX / Zotero metadata"
+        - "Other"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What went wrong?
+      description: Describe the unexpected behaviour.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Place PDF in +/pdf/
+        2. Press ALT+L → Generate Slides
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: error
+    attributes:
+      label: Error message or log
+      render: shell
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: "e.g. Windows 11, macOS 14, Ubuntu 24.04"
+
+  - type: input
+    id: python_version
+    attributes:
+      label: Python version
+      placeholder: "e.g. 3.11.9"
+
+  - type: textarea
+    id: cross_repo
+    attributes:
+      label: Cross-repo links
+      description: Is this caused by a bug in a sibling repo? Link the issue here.
+      placeholder: |
+        - SCgeeker/claude_lit_workflow#
+        - SCgeeker/zotero-arxiv-daily#
+        - SCgeeker/twcc-ollama-proxy#

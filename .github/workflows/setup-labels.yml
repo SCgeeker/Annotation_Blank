@@ -1,0 +1,59 @@
+name: Setup PKM Labels
+
+on:
+  workflow_dispatch:
+
+jobs:
+  setup-labels:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create PKM system labels
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const labels = [
+              // Pipeline stage labels
+              { name: "pipeline: ingestion",   color: "0075ca", description: "Paper is being collected / ingested from a source" },
+              { name: "pipeline: processing",  color: "e4e669", description: "AI is generating slides or zettel notes" },
+              { name: "pipeline: annotation",  color: "d93f0b", description: "Paper is being annotated in the vault" },
+              { name: "pipeline: synthesis",   color: "0e8a16", description: "Creating cross-paper synthesis or connections" },
+              // Component labels (one per PKM repo)
+              { name: "component: annotation-blank",   color: "bfd4f2", description: "Annotation_Blank — Obsidian vault" },
+              { name: "component: claude-lit-workflow", color: "d4c5f9", description: "claude_lit_workflow — AI processing backend" },
+              { name: "component: zotero-arxiv-daily", color: "fef2c0", description: "zotero-arxiv-daily — paper discovery & ingestion" },
+              { name: "component: twcc-ollama-proxy",  color: "c2e0c6", description: "twcc-ollama-proxy — local LLM inference" },
+              { name: "component: act-base",           color: "f9d0c4", description: "ACT_Base — core structure and templates" },
+              // Priority labels
+              { name: "priority: high",   color: "b60205", description: "High priority" },
+              { name: "priority: medium", color: "fbca04", description: "Medium priority" },
+              { name: "priority: low",    color: "0e8a16", description: "Low priority" },
+            ];
+
+            for (const label of labels) {
+              try {
+                await github.rest.issues.createLabel({
+                  owner: context.repo.owner,
+                  repo:  context.repo.repo,
+                  name:  label.name,
+                  color: label.color,
+                  description: label.description,
+                });
+                console.log(`Created: ${label.name}`);
+              } catch (err) {
+                if (err.status === 422) {
+                  // Label already exists — update it instead
+                  await github.rest.issues.updateLabel({
+                    owner: context.repo.owner,
+                    repo:  context.repo.repo,
+                    name:  label.name,
+                    color: label.color,
+                    description: label.description,
+                  });
+                  console.log(`Updated: ${label.name}`);
+                } else {
+                  throw err;
+                }
+              }
+            }

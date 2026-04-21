@@ -1,0 +1,74 @@
+name: "📄 New Paper to Annotate"
+description: Track a new academic paper entering the PKM pipeline for annotation.
+title: "[Paper] "
+labels:
+  - "pipeline: ingestion"
+  - "component: annotation-blank"
+body:
+  - type: input
+    id: citekey
+    attributes:
+      label: Citekey / BibTeX key
+      description: "e.g. Smith2024 — used as the folder name in ACT/0️⃣Annotation/"
+      placeholder: AuthorYear
+    validations:
+      required: true
+
+  - type: input
+    id: title
+    attributes:
+      label: Paper title
+      placeholder: Full title of the paper
+    validations:
+      required: true
+
+  - type: input
+    id: doi_url
+    attributes:
+      label: DOI or URL
+      placeholder: "https://doi.org/10.xxxx/..."
+
+  - type: dropdown
+    id: source
+    attributes:
+      label: Paper source
+      description: Where did this paper come from?
+      options:
+        - zotero-arxiv-daily (auto-discovered)
+        - Zotero library (manual import)
+        - arXiv (direct)
+        - Journal / conference
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: llm_backend
+    attributes:
+      label: LLM backend to use
+      options:
+        - Google Gemini (cloud)
+        - OpenAI (cloud)
+        - Anthropic Claude (cloud)
+        - twcc-ollama-proxy (local)
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: pipeline_stages
+    attributes:
+      label: Pipeline progress
+      description: Check stages as they are completed.
+      options:
+        - label: "PDF placed in `+/pdf/`"
+        - label: "Step 1 — Generate Slides completed"
+        - label: "Step 2 — Generate Zettel completed"
+        - label: "Step 3 — Import Zettel completed"
+        - label: "Annotation note reviewed and tagged"
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Any extra context, related papers, or cross-repo issue links.
+      placeholder: "e.g. Related to SCgeeker/zotero-arxiv-daily#12"

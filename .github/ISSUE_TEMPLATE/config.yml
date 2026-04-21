@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: CSC PKM System Project Board
+    url: https://github.com/orgs/SCgeeker/projects
+    about: View the full CSC PKM System project board across all repos.
+  - name: claude_lit_workflow (AI backend)
+    url: https://github.com/SCgeeker/claude_lit_workflow
+    about: Report issues with the AI processing pipeline (slides/zettel generation).
+  - name: zotero-arxiv-daily (paper discovery)
+    url: https://github.com/SCgeeker/zotero-arxiv-daily
+    about: Report issues with paper ingestion or arXiv/Zotero integration.
+  - name: twcc-ollama-proxy (LLM backend)
+    url: https://github.com/SCgeeker/twcc-ollama-proxy
+    about: Report issues with the local LLM inference proxy.
