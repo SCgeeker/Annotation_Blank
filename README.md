@@ -1,5 +1,17 @@
 # miniverse
 
+> **Part of the [CSC PKM System](https://github.com/orgs/SCgeeker/projects)**
+>
+> | Repo | Role |
+> |---|---|
+> | [ACT_Base](https://github.com/SCgeeker/ACT_Base) | Core structure & note templates |
+> | **Annotation_Blank** ← *you are here* | Obsidian annotation vault |
+> | [claude_lit_workflow](https://github.com/SCgeeker/claude_lit_workflow) | AI backend — slides & zettel generation |
+> | [zotero-arxiv-daily](https://github.com/SCgeeker/zotero-arxiv-daily) | Paper discovery & Zotero ingestion |
+> | [twcc-ollama-proxy](https://github.com/SCgeeker/twcc-ollama-proxy) | Local LLM inference proxy |
+>
+> **Pipeline:** arXiv/Zotero → `zotero-arxiv-daily` → `claude_lit_workflow` (+ optional `twcc-ollama-proxy`) → **`Annotation_Blank`** → structured notes
+
 A minimal Obsidian vault for converting academic PDFs into structured Annotation notes using AI. It strips the full [Program_verse](https://github.com/SCgeeker/Program_verse) workflow down to a single pipeline: drop a PDF, run three commands in Obsidian, get a fully-formed Annotation note with 20 atomic Zettelkasten cards.
 
 ---

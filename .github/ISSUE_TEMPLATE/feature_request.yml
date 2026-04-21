@@ -1,0 +1,54 @@
+name: "✨ Feature Request"
+description: Suggest an improvement to the annotation vault or pipeline.
+title: "[Feature] "
+labels:
+  - "enhancement"
+  - "component: annotation-blank"
+body:
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope
+      description: Which part of the system does this affect?
+      options:
+        - "Annotation vault (templates, folder structure)"
+        - "Obsidian plugins / hotkeys"
+        - "Import script (import_zettel.py)"
+        - "QuickAdd / Templater scripts"
+        - "Cross-repo integration (claude_lit_workflow)"
+        - "Cross-repo integration (zotero-arxiv-daily)"
+        - "Cross-repo integration (twcc-ollama-proxy)"
+        - "Documentation / README"
+        - "Other"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or motivation
+      description: What limitation or pain point does this address?
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: Describe the desired behaviour or change.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+
+  - type: textarea
+    id: cross_repo
+    attributes:
+      label: Cross-repo dependencies
+      description: Does this require changes in sibling repos?
+      placeholder: |
+        - SCgeeker/claude_lit_workflow: ...
+        - SCgeeker/zotero-arxiv-daily: ...

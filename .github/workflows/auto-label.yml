@@ -1,0 +1,24 @@
+name: Auto Label
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Auto-label PRs
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const labels = ['lbl1', 'lbl2']; // replace with your labels
+            await github.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels
+            });
